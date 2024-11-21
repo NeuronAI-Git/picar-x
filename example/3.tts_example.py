@@ -24,6 +24,8 @@ def main():
     music.music_set_volume(20)
     tts.lang("en-US")
 
+    tts.say("Started tts")
+
     while True:
         key = readchar.readkey()
         key = key.lower()
