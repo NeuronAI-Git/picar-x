@@ -21,8 +21,6 @@ def send(prompt):
         "https://text.pollinations.ai/", json=params, headers={"Content-Type": "application/json"}, timeout=45
     )
 
-    print(request, request.status_code)
-
     try:
         response_content = request.content
         messages.append({"role": "user", "content": response_content})
@@ -35,11 +33,10 @@ def main():
     tts.lang("en-US")
     while True:
         response = send(input("> "))
-        print(messages)
-        print(response)
         try:
             decoded_response = response.decode('utf-8')
             escaped_response = decoded_response.replace("'", "\\'")
+            print(escaped_response)
             tts.say(escaped_response)
         except Exception as e:
             print(f"Error processing response: {e}")
