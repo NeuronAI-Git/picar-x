@@ -1,3 +1,10 @@
+import time
+from picarx import Picarx
+from robot_hat import Music,TTS
+
+music = Music()
+tts = TTS()
+px = Picarx()
 def main():
     music.music_set_volume(20)
     tts.lang("en-US")
