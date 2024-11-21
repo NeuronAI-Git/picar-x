@@ -14,7 +14,7 @@ def main():
     tts.say("2")
     tts.say("1")
     tts.say("DANCE!")
-    music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')
+    music.music_play('../musics/macarena.mp3')
     for i in range(3):
         px.set_dir_servo_angle(30)
         px.set_cam_pan_angle(30)
