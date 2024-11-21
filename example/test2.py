@@ -4,7 +4,7 @@ tts = TTS()
 
 def main():
     tts.lang("en-US")
-    tts.say("Started tts")
+    tts.say("wow thats cool bro")
     while True:
         tts.say(input(">>> "))
 
