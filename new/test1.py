@@ -27,16 +27,16 @@ def send(prompt):
         return response_content
     except:
         messages.append({"role": "user", "content": "Sorry.. but I am very tired and my brain isn't working right now.."})
-        return "Sorry.. but I am very tired and my brain isn't working right now.."
+        return b"Sorry.. but I am very tired and my brain isn't working right now.."
 
 def main():
     tts.lang("en-US")
     while True:
         response = send(input("> "))
+        print(response.decode("utf-8"))
         try:
             decoded_response = response.decode('utf-8')
             escaped_response = decoded_response.replace("'", "\\'")
-            print(escaped_response)
             tts.say(escaped_response)
         except Exception as e:
             print(f"Error processing response: {e}")
