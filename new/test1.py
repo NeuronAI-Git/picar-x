@@ -24,7 +24,7 @@ def send(prompt):
     print(request, request.status_code)
 
     try:
-        response_content = request.json().get("content", "Sorry.. but I am very tired and my brain isn't working right now..")
+        response_content = request.content
         messages.append({"role": "user", "content": response_content})
         return response_content
     except:
