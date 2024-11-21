@@ -1,5 +1,6 @@
 import requests
 from robot_hat import TTS
+import shlex
 
 tts = TTS()
 messages = []
@@ -34,7 +35,9 @@ def main():
     while True:
         response = send(input("> "))
         print(response)
-        tts.say(response)
+        
+        escaped_response = shlex.quote(response)
+        tts.say(escaped_response)
 
 if __name__ == "__main__":
     main()
