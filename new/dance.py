@@ -7,7 +7,7 @@ tts = TTS()
 px = Picarx()
 
 def main():
-    music.music_set_volume(20)
+    music.music_set_volume(10)
     tts.lang("en-US")
 
     tts.say("3")
