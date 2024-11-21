@@ -33,13 +33,14 @@ def send(prompt):
 
 def main():
     tts.lang("en-US")
-    tts.say("wow thats cool bro")
     while True:
         response = send(input("> "))
         print(messages)
         print(response)
-        escaped_response = response.replace("'", "\\'")
-        tts.say(escaped_response)
+        try:
+            decoded_response = response.decode('utf-8')
+            escaped_response = decoded_response.replace("'", "\\'")
+            tts.say(escaped_response)
+        except Exception as e:
+            print(f"Error processing response: {e}")
 
-if __name__ == "__main__":
-    main()
