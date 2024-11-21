@@ -21,6 +21,8 @@ def send(prompt):
         "https://text.pollinations.ai/", json=params, headers={"Content-Type": "application/json"}, timeout=45
     )
 
+    print(request, request.status_code)
+
     try:
         response_content = request.json().get("content", "Sorry.. but I am very tired and my brain isn't working right now..")
         messages.append({"role": "user", "content": response_content})
