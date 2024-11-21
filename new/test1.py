@@ -4,6 +4,8 @@ from robot_hat import TTS
 tts = TTS()
 messages = []
 
+messages.append({"role": "system", "content": "Provide short responses (under 1-1.5 sentence(s)), be like a nomral teen boy friend, do not reply professional or formal, be informal and chill and fun and stuff. You are a robot called Picar, or also known as pie/pi. You have 4 wheels, a head, and a body (and made out of a silver color metal/steel). Dont use emojis or markdown EVER under ANY circumstances."})
+
 def send(prompt):
     if len(messages) >= 25:
         messages.pop(1)
@@ -11,7 +13,6 @@ def send(prompt):
     messages.append({"role": "user", "content": str(prompt)})
 
     params = {
-        "system": "Provide short responses (under 1-1.5 sentence(s)), be like a nomral teen boy friend, do not reply professional or formal, be informal and chill and fun and stuff. You are a robot called Picar, or also known as pie/pi. You have 4 wheels, a head, and a body (and made out of a silver color metal/steel). Dont use emojis or markdown EVER under ANY circumstances.",
         "messages": messages,
         "model": "mistral-large"
     }
@@ -33,6 +34,7 @@ def main():
     tts.say("wow thats cool bro")
     while True:
         response = send(input("> "))
+        print(messages)
         print(response)
         escaped_response = response.replace("'", "\\'")
         tts.say(escaped_response)
