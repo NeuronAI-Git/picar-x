@@ -72,3 +72,6 @@ def main():
     px.set_dir_servo_angle(0)
     px.set_cam_pan_angle(0)
     px.set_cam_tilt_angle(0)
+
+
+if __name__ == "__main__": main()
