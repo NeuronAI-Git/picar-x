@@ -1,4 +1,5 @@
 import time
+import requests
 
 from vilib import Vilib
 from picarx import Picarx
@@ -310,3 +311,62 @@ class VISION:
         _time.sleep(time)
         if path: _vision.take_photo(photo_name, path)
         else: _vision.take_photo(photo_name)
+
+class LLM:
+    model="openai"
+    system="""
+    You are a 4 wheeled rover like robot called Pie (Picar-X robot). Use only short sentences, max 2 sentences. Don't offer to help the user, just give help if they ask, you are for conversation, not for assistance unless asked. Instead of typing numbers or symbols (besides punctuation like , . ? ! ' etc), type them out like this:
+    1   --->   One
+    100 --->   One Hundred
+    /   --->   Slash
+    -   --->   Minus
+
+    and so on.
+    """
+    messages=[]
+    headers={"Content-Type": "application/json"}
+    timeout=45
+
+    _create = lambda role, content: {"role": str(role), "content": str(content)}
+
+    messages.append(_create("system", system))
+
+    def generate(prompt, time=0):
+        _time.sleep(time)
+        LLM.messages.append(LLM._create("user", prompt))
+
+        if len(LLM.messages) > 25:
+            while True:
+                LLM.messages.pop(1)
+                if len(LLM.messages) == 25:
+                    break
+        
+        params = {
+            "messages": LLM.messages,
+            "model": LLM.model
+        }
+
+        request = requests.post(
+            "https://text.pollinations.ai/", json=params, headers=LLM.headers, timeout=LLM.timeout
+        )
+
+        try:
+            content = request.content
+            LLM.messages.append(LLM._create("assistant", content))
+            return LLM._decode(content)
+        except:
+            LLM.messages.append(LLM._create("assistant", "Sorry, I'm having an issue."))
+            return LLM._decode(b"Sorry, I'm having an issue.")
+    
+    def _decode(content):
+        try:
+            decoded_response = content.decode('utf-8')
+            escaped_response = decoded_response.replace("'", "\\'")
+            return escaped_response
+        except Exception as e:
+            return content
+            
+    def clear(time=0):
+        _time.sleep(time)
+        LLM.messages = []
+        LLM.messages.append(LLM._create("system", LLM.system))
