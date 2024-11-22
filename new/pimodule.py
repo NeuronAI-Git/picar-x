@@ -24,27 +24,16 @@ class CAR:
     def backward(speed, time=0):
         _time.sleep(time)
         _picar.backward(abs(speed))
-
-    def set_motor_1(speed, duration=0):
+        
+    def set_motor_1(speed, time=0):
+        _time.sleep(time)
+        _picar.motor_direction_calibrate(1, 1 if speed >= 0 else -1)
         _picar.set_motor_speed(1, speed)
-        if duration > 0:
-            time.sleep(duration)
-            _picar.set_motor_speed(1, 0)
 
-    def set_motor_2(speed, duration=0):
+    def set_motor_2(speed, time=0):
+        _time.sleep(time)
+        _picar.motor_direction_calibrate(2, 1 if speed >= 0 else -1)
         _picar.set_motor_speed(2, speed)
-        if duration > 0:
-            time.sleep(duration)
-            _picar.set_motor_speed(2, 0)
-
-
-    # def set_motor_1(speed, time=0):
-    #     _time.sleep(time)
-    #     _picar.set_motor_speed(1, speed)
-
-    # def set_motor_2(speed, time=0):
-    #     _time.sleep(time)
-    #     _picar.set_motor_speed(2, speed)
 
     def set_tilt(amount, time=0):
         _time.sleep(time)
