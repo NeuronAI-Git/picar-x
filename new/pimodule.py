@@ -25,6 +25,14 @@ class CAR:
         _time.sleep(time)
         _picar.backward(abs(speed))
 
+    def set_motor_1(speed, time=0):
+        _time.sleep(time)
+        _picar.set_motor_speed(1, speed)
+
+    def set_motor_2(speed, time=0):
+        _time.sleep(time)
+        _picar.set_motor_speed(2, speed)
+
     def set_tilt(amount, time=0):
         _time.sleep(time)
         _picar.set_cam_tilt_angle(amount)
