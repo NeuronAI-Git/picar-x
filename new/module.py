@@ -13,7 +13,7 @@ _time = time
 class CAR:
     def forward(speed, time=0):
         _time.sleep(time)
-        _picar.forward(speed)
+        _picar.forward(abs(speed))
 
     def backward(speed, time=0):
         _time.sleep(time)
