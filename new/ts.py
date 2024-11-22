@@ -1,12 +1,11 @@
 import pimodule
 
-pimodule.CAR.forward(5)
-pimodule.CAR.stop(2)
+pimodule.SPEAK.pico2wave("Hi there! I am looking around.")
 
-pimodule.CAR.backward(5)
-pimodule.CAR.stop(2)
+for _ in range(2):
+    pimodule.CAR.set_pan(30, 1)
+    pimodule.CAR.set_pan(-30, 1)
 
-pimodule.CAR.set_dir(-30)
-pimodule.CAR.forward(5)
-pimodule.CAR.stop(4)
-pimodule.CAR.set_dir(0)
+pimodule.CAR.set_pan(0, 1)
+pimodule.SPEAK.pico2wave("Nice room!", 0.5)
+pimodule.LLM.generate("So, how are you?", 1)
