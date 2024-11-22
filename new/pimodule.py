@@ -11,6 +11,11 @@ _vision = Vilib()
 _time = time
 
 class CAR:
+    def stop(time=0):
+        _time.sleep(time)
+        _picar.stop()
+        _picar.stop()
+
     def forward(speed, time=0):
         _time.sleep(time)
         _picar.forward(abs(speed))
