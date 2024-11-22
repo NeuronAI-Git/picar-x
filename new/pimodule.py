@@ -24,7 +24,7 @@ class CAR:
     def backward(speed, time=0):
         _time.sleep(time)
         _picar.backward(abs(speed))
-        
+
     def set_motor_1(speed, time=0):
         _time.sleep(time)
         _picar.motor_direction_calibrate(1, 1 if speed >= 0 else -1)
@@ -187,7 +187,7 @@ class VISION:
 
     def camera_start(vflip=False, hflip=False, time=0):
         _time.sleep(time)
-        _vision.camera()
+        _vision.camera_start()
 
     def close_color_detection(time=0):
         _time.sleep(time)
