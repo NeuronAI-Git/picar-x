@@ -8,6 +8,7 @@ def main():
     time.sleep(0) # Start
     
     pi.CAR.set_tilt(30)
+    print(pi._picar.ultrasonic.read())
     time.sleep(1)
     pi.CAR.set_tilt(30)
     
