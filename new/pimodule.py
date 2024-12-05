@@ -21,6 +21,7 @@ _vision = None
 _time = time
 
 def init(picar=True, music=True, tts=True, vision=True):
+    global _music, _tts, _picar, _vision
     if picar: 
         from picarx import Picarx
         _picar = Picarx()
