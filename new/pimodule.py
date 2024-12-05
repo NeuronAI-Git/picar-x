@@ -1,36 +1,36 @@
 import time
 import requests
 
-# from vilib import Vilib
-# from picarx import Picarx
-# from robot_hat import Music, TTS
+from vilib import Vilib
+from picarx import Picarx
+from robot_hat import Music, TTS
 
 # _music = Music()
 # _tts = TTS()
 # _picar = Picarx()
 # _vision = Vilib()
 
-_music = None
-_tts = None
-_picar = None
-_vision = None
+_music: Music = None
+_tts: TTS = None
+_picar: Picarx = None
+_vision: Vilib = None
 _time = time
 
 def init(picar=True, music=True, tts=True, vision=True):
     if picar: 
-        from picarx import Picarx
+        # from picarx import Picarx
         _picar = Picarx()
     
     if music:
-        from robot_hat import Music
+        # from robot_hat import Music
         _music = Music()
         
     if tts:
-        from robot_hat import TTS
+        # from robot_hat import TTS
         _tts = TTS()
     
     if vision:
-        from vilib import Vilib
+        # from vilib import Vilib
         _vision == Vilib()
     
     
