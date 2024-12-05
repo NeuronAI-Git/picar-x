@@ -151,7 +151,7 @@ class MUSIC:
         _time.sleep(time)
         _music.sound_play(file, volume)
 
-    def sound_play(file, volume=None, time=0):
+    def sound_play_threading(file, volume=None, time=0):
         _time.sleep(time)
         _music.sound_play_threading(file, volume)
 
@@ -309,18 +309,16 @@ class VISION:
         _time.sleep(time)
         _vision.hide_fps()
 
-    def rec_video_work(time=0):
-        _time.sleep(time)
-        _vision.rec_video_work()
-
     def make_qrcode(data, path, version=1, box_size=10, border=4, fill_color=(132, 112, 255), back_color=(255, 255, 255), time=0):
         _time.sleep(time)
         _vision.make_qrcode(data, path, version, box_size, border, fill_color, back_color)
 
     def take_photo(photo_name, path=None, time=0):
         _time.sleep(time)
-        if path: _vision.take_photo(photo_name, path)
-        else: _vision.take_photo(photo_name)
+        if path: 
+            _vision.take_photo(photo_name, path)
+        else: 
+            _vision.take_photo(photo_name)
 
 class LLM:
     model="openai"
@@ -337,9 +335,10 @@ class LLM:
     headers={"Content-Type": "application/json"}
     timeout=45
 
-    _create = lambda role, content: {"role": str(role), "content": str(content)}
-
-    messages.append(_create("system", system))
+    messages.append({"role": "system", "content": str(system)})
+    
+    def _create(role, content):
+        return {"role": str(role), "content": str(content)}
 
     def generate(prompt, time=0):
         _time.sleep(time)
@@ -364,7 +363,7 @@ class LLM:
             content = request.content
             LLM.messages.append(LLM._create("assistant", content))
             return LLM._decode(content)
-        except:
+        except Exception:
             LLM.messages.append(LLM._create("assistant", "Sorry, I'm having an issue."))
             return LLM._decode(b"Sorry, I'm having an issue.")
     
@@ -373,7 +372,7 @@ class LLM:
             decoded_response = content.decode('utf-8')
             escaped_response = decoded_response.replace("'", "\\'")
             return escaped_response
-        except Exception as e:
+        except Exception:
             return content
             
     def clear(time=0):
