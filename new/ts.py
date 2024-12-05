@@ -1,5 +1,6 @@
 import pimodule
 
+pimodule.init()
 pimodule.MUSIC.set_volume(10)
 pimodule.MUSIC.music("../musics/macarena.mp3")
 
