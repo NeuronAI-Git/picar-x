@@ -79,7 +79,8 @@ class CAR:
 
     def set_speed(amount, time=0):
         _time.sleep(time)
-        _picar.set_motor_speed(amount)
+        _picar.set_motor_speed(1, amount)
+        _picar.set_motor_speed(2, amount)
 
     def set_power(amount, time=0):
         _time.sleep(time)
