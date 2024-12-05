@@ -1,5 +1,7 @@
 import pimodule
 
+pimodule.init()
+
 pimodule.CAR.set_motor_1(0)
 pimodule.CAR.set_motor_2(0)
 pimodule.CAR.set_pan(0)
