@@ -8,7 +8,11 @@ def main():
     time.sleep(0) # Start
     
     pi.CAR.set_tilt(30)
-    print(pi._picar.ultrasonic.read())
+    
+    for _ in range(10):
+        print(pi._picar.ultrasonic.read())
+        time.sleep(0.2)
+        
     time.sleep(1)
     pi.CAR.set_tilt(30)
     
@@ -17,5 +21,5 @@ def main():
     
     
 if __name__ == "__main__":
-    print(f"[{datetime.now().strftime('%Y-%m-%d %I:%M %p')}] start: ", pi, f">>> {__name__}")
+    print(f"[{datetime.datetime().strftime('%Y-%m-%d %I:%M %p')}] start: ", pi, f">>> {__name__}")
     main()
