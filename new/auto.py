@@ -1,6 +1,4 @@
 #  @errors  ---------------------------------
-# pi.api.ultra_sonic: pi._picar
-# pi.api.grayscale: pi._picar
 #  ------------------------------------------
 
 #  @imports  --------------------------------
@@ -44,12 +42,8 @@ def main(
 ) -> None:
     print(">>> main_start")
     
-    for _ in range(10):
-        print(round(pi._picar.ultrasonic.read(), 2))
-        time.sleep(0.5)
-    
-    # pi.VISION.camera_start()  # this might not work actually.. update pimodule
-    # pi.VISION.display()       # this might not work actually.. update pimodule
+    pi.VISION.camera_start()  # this might not work actually.. update pimodule
+    pi.VISION.display()       # this might not work actually.. update pimodule
     
 #  ------------------------------------------
 
