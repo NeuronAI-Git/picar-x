@@ -26,7 +26,7 @@ _vision = None
 _time = time
 
 def init(picar=True, music=True, tts=True, vision=True):
-    global _music, _tts, _picar, _vision
+    global _music, _tts, _picar, _vision,        _vilib, _picarx, _robot_hat
     if picar: 
         import picarx
         # from picarx import Picarx
