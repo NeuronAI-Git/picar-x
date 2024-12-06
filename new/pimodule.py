@@ -14,6 +14,11 @@ import requests
 # _tts: TTS = None
 # _picar: Picarx = None
 # _vision: Vilib = None
+
+_vilib = None
+_picarx = None
+_robot_hat = None
+
 _music = None
 _tts = None
 _picar = None
@@ -23,20 +28,29 @@ _time = time
 def init(picar=True, music=True, tts=True, vision=True):
     global _music, _tts, _picar, _vision
     if picar: 
-        from picarx import Picarx
-        _picar = Picarx()
+        import picarx
+        # from picarx import Picarx
+        
+        _picar = picarx.Picarx()
+        _picarx = picarx
     
     if music:
-        from robot_hat import Music
-        _music = Music()
+        import robot_hat
+        # from robot_hat import Music
+        _music = robot_hat.Music()
+        _robot_hat = robot_hat
         
     if tts:
-        from robot_hat import TTS
-        _tts = TTS()
+        import robot_hat
+        # from robot_hat import TTS
+        _tts = robot_hat.TTS()
+        _robot_hat = robot_hat
     
     if vision:
-        from vilib import Vilib
-        _vision == Vilib()
+        import vilib
+        # from vilib import Vilib
+        _vision == vilib.Vilib()
+        _vilib = vilib
     
     
     
