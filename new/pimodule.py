@@ -49,7 +49,7 @@ def init(picar=True, music=True, tts=True, vision=True):
     if vision:
         import vilib
         # from vilib import Vilib
-        _vision == vilib.Vilib()
+        _vision = vilib.Vilib()
         _vilib = vilib
     
     
