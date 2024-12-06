@@ -44,8 +44,12 @@ def main(
 ) -> None:
     print(">>> main_start")
     
-    pi.VISION.camera_start()  # this might not work actually.. update pimodule
-    pi.VISION.display()       # this might not work actually.. update pimodule
+    for _ in range(10):
+        print(round(pi._picar.ultrasonic.read(), 2))
+        time.sleep(0.5)
+    
+    # pi.VISION.camera_start()  # this might not work actually.. update pimodule
+    # pi.VISION.display()       # this might not work actually.. update pimodule
     
 #  ------------------------------------------
 
