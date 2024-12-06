@@ -34,6 +34,9 @@ def main(
 ) -> None:
     print(">>> main_start")
     
+    # Vilib.camera_start(vflip=False,hflip=False)
+    # Vilib.display(local=True,web=True)
+    
 #  ------------------------------------------
 
 #  @final  ----------------------------------
@@ -42,17 +45,25 @@ def final(
 ) -> None:
     print(">>> final_start")
     
-    pi.CAR.set_dir(0)
-    pi.CAR.set_tilt(0)
-    pi.CAR.set_pan(0)
-    pi.CAR.set_cliff([0, 0, 0])
-    pi.CAR.set_speed(0)
-    pi.CAR.set_motor_1(0)
-    pi.CAR.set_motor_2(0)
-    pi.CAR.set_grayscale([0, 0, 0])
-    pi.CAR.set_line([0, 0, 0])
-    pi.CAR.set_power(0)
-    pi.CAR.forward(0)
+    if pi._picar is not None:
+        pi.CAR.set_dir(0)
+        pi.CAR.set_tilt(0)
+        pi.CAR.set_pan(0)
+        pi.CAR.set_cliff([0, 0, 0])
+        pi.CAR.set_speed(0)
+        pi.CAR.set_motor_1(0)
+        pi.CAR.set_motor_2(0)
+        pi.CAR.set_grayscale([0, 0, 0])
+        pi.CAR.set_line([0, 0, 0])
+        pi.CAR.set_power(0)
+        pi.CAR.forward(0)
+        pi.CAR.stop()
+    
+    if pi._music is not None:
+        pi.MUSIC.disable()
+        
+    if pi._vision is not None:
+        pi.VISION.camera_close()
     
     print(">>> final_end")
 #  ------------------------------------------
