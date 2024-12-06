@@ -112,7 +112,7 @@ class CAR:
         _time.sleep(time)
         _picar.set_grayscale_reference(amount)
 
-    def get_distamce(time=0):
+    def get_distance(time=0):
         _time.sleep(time)
         return _picar.get_distance()
 
