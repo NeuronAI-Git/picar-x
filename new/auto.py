@@ -42,9 +42,6 @@ def main(
 ) -> None:
     print(">>> main_start")
     
-    pi.VISION.camera_start()  # this might not work actually.. update pimodule
-    pi.VISION.display()       # this might not work actually.. update pimodule
-    
 #  ------------------------------------------
 
 #  @final  ----------------------------------
